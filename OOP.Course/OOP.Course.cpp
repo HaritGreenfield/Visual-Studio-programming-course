@@ -10,26 +10,40 @@ public:
     int SubscribersCount;
     list<string> PublishedVideoTitles;
 
+    YouTubeChannel(string name, string ownerName) {
+        Name = name;
+        OwnerName = ownerName;
+        SubscribersCount=0;
+    }
+
+    void GetInfo() {
+        cout << "Name: " << Name << endl;
+        cout << "OwnerName: " << OwnerName << endl;
+        cout << "SubscribersCount: " << SubscribersCount << endl;
+        cout << "Videos:" << endl;
+        for (string videoTitle : PublishedVideoTitles) {
+            cout << videoTitle << endl;
+        }
+
+    }
 };
 
 
 int main()
 {
-    YouTubeChannel ytChannel;
-    ytChannel.Name = "grassfedgainz";
-    ytChannel.OwnerName = "Harit";
-    ytChannel.SubscribersCount = 1800;
-    ytChannel.PublishedVideoTitles = {"Training vlogs", "Beyond 5/3/1", "Deload week"};
+    YouTubeChannel ytChannel("grassfedgainz", "Harit");
+    ytChannel.PublishedVideoTitles.push_back("OHP");
+    ytChannel.PublishedVideoTitles.push_back("Deadlift");
+    ytChannel.PublishedVideoTitles.push_back("Bench Press");
+    ytChannel.PublishedVideoTitles.push_back("Squat");
+    YouTubeChannel ytChannel2("AmySings", "Amy");
 
-    cout << "Name: " << ytChannel.Name << endl;
-    cout << "OwnerName: " << ytChannel.OwnerName << endl;
-    cout << "SubscribersCount: " << ytChannel.SubscribersCount << endl;
-    cout << "Videos:" << endl;
-    for (string videoTitle : ytChannel.PublishedVideoTitles) {
-    
-        cout << videoTitle << endl;
-    }
-   
+
+    ytChannel.GetInfo();
+    ytChannel2.GetInfo();
+
+
+
 
     system("pause>0");
 }
