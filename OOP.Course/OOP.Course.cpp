@@ -4,12 +4,12 @@ using namespace std;
 
 
 class YouTubeChannel {
-public:
+private:
     string Name;
     string OwnerName;
     int SubscribersCount;
     list<string> PublishedVideoTitles;
-
+public:
     YouTubeChannel(string name, string ownerName) {
         Name = name;
         OwnerName = ownerName;
@@ -26,21 +26,30 @@ public:
         }
 
     }
+    void Subscribe() {
+        SubscribersCount++;
+    }
+    void Unsubscribe() {
+        if(SubscribersCount>0)
+        SubscribersCount--;
+    }
+    void PublishVideo(string title) {
+        PublishedVideoTitles.push_back(title);
+    }
 };
 
 
 int main()
 {
     YouTubeChannel ytChannel("grassfedgainz", "Harit");
-    ytChannel.PublishedVideoTitles.push_back("OHP");
-    ytChannel.PublishedVideoTitles.push_back("Deadlift");
-    ytChannel.PublishedVideoTitles.push_back("Bench Press");
-    ytChannel.PublishedVideoTitles.push_back("Squat");
-    YouTubeChannel ytChannel2("AmySings", "Amy");
-
-
+    ytChannel.PublishVideo("OHP");
+    ytChannel.PublishVideo("Deadlift");
+    ytChannel.PublishVideo("Bench Press");
+    ytChannel.PublishVideo("Squat");
+ 
+    ytChannel.Unsubscribe();
     ytChannel.GetInfo();
-    ytChannel2.GetInfo();
+   
 
 
 
