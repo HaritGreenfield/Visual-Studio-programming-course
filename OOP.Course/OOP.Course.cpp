@@ -2,13 +2,13 @@
 #include<list>
 using namespace std;
 
-
 class YouTubeChannel {
 private:
     string Name;
-    string OwnerName;
     int SubscribersCount;
     list<string> PublishedVideoTitles;
+protected:
+    string OwnerName;
 public:
     YouTubeChannel(string name, string ownerName) {
         Name = name;
@@ -38,21 +38,29 @@ public:
     }
 };
 
+class CookingYouTubeChannel:public YouTubeChannel {
+public:
+    CookingYouTubeChannel(string name, string ownerName):YouTubeChannel(name, ownerName) {
+
+    }
+    void Practice() {
+        cout << OwnerName << " is practicing cooking, learning new recipes, experimenting with whey protein powder..."<<endl;
+    }
+
+};
 
 int main()
 {
-    YouTubeChannel ytChannel("grassfedgainz", "Harit");
-    ytChannel.PublishVideo("OHP");
-    ytChannel.PublishVideo("Deadlift");
-    ytChannel.PublishVideo("Bench Press");
-    ytChannel.PublishVideo("Squat");
- 
-    ytChannel.Unsubscribe();
-    ytChannel.GetInfo();
-   
-
-
-
+    CookingYouTubeChannel cookingYtChannel("Harit's Kitchen", "Harit");
+    CookingYouTubeChannel cookingYtChannel2("Amy's Kitchen", "Amy");
+    /*cookingYtChannel.PublishVideo("Apple protein pie");
+    cookingYtChannel.PublishVideo("Chocolate whey cake");
+    cookingYtChannel.Subscribe();
+    cookingYtChannel.Subscribe();
+    cookingYtChannel.GetInfo();*/
+    cookingYtChannel.Practice();
+    cookingYtChannel2.Practice();
+    
 
     system("pause>0");
 }
