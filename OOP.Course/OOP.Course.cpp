@@ -9,11 +9,13 @@ private:
     list<string> PublishedVideoTitles;
 protected:
     string OwnerName;
+    int ContentQuality;
 public:
     YouTubeChannel(string name, string ownerName) {
         Name = name;
         OwnerName = ownerName;
         SubscribersCount=0;
+        ContentQuality = 0;
     }
 
     void GetInfo() {
@@ -36,6 +38,12 @@ public:
     void PublishVideo(string title) {
         PublishedVideoTitles.push_back(title);
     }
+    void CheckAnalytics() {
+        if (ContentQuality < 5)
+            cout << Name << " has bad quality content." << endl;
+        else
+            cout << Name << " has great content." << endl;
+    }
 };
 
 class CookingYouTubeChannel:public YouTubeChannel {
@@ -45,22 +53,38 @@ public:
     }
     void Practice() {
         cout << OwnerName << " is practicing cooking, learning new recipes, experimenting with whey protein powder..."<<endl;
+        ContentQuality++;
     }
 
 };
+class SingersYouTubeChannel :public YouTubeChannel {
+public:
+    SingersYouTubeChannel(string name, string ownerName) :YouTubeChannel(name, ownerName) {
 
+    }
+    void Practice() {
+        cout << OwnerName << " is taking singing classes, learning new songs, learning how to dance..." << endl;
+        ContentQuality++;
+    }
+
+};
 int main()
 {
     CookingYouTubeChannel cookingYtChannel("Harit's Kitchen", "Harit");
-    CookingYouTubeChannel cookingYtChannel2("Amy's Kitchen", "Amy");
-    /*cookingYtChannel.PublishVideo("Apple protein pie");
-    cookingYtChannel.PublishVideo("Chocolate whey cake");
-    cookingYtChannel.Subscribe();
-    cookingYtChannel.Subscribe();
-    cookingYtChannel.GetInfo();*/
+    SingersYouTubeChannel singersYtChannel("JohnSings", "John");
+  
     cookingYtChannel.Practice();
-    cookingYtChannel2.Practice();
-    
+    singersYtChannel.Practice();
+    singersYtChannel.Practice();
+    singersYtChannel.Practice();
+    singersYtChannel.Practice();
+    singersYtChannel.Practice();
+
+    YouTubeChannel* yt1 = &cookingYtChannel;
+    YouTubeChannel* yt2 = &singersYtChannel;
+
+    yt1->CheckAnalytics();
+    yt2->CheckAnalytics();
 
     system("pause>0");
 }
