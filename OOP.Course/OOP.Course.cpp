@@ -74,11 +74,17 @@ int main()
     SingersYouTubeChannel singersYtChannel("JohnSings", "John");
   
     cookingYtChannel.Practice();
+    cookingYtChannel.Practice();
+    cookingYtChannel.Practice();
+    cookingYtChannel.Practice();
+    cookingYtChannel.Practice();
     singersYtChannel.Practice();
     singersYtChannel.Practice();
     singersYtChannel.Practice();
     singersYtChannel.Practice();
-    singersYtChannel.Practice();
+ 
+  
+
 
     YouTubeChannel* yt1 = &cookingYtChannel;
     YouTubeChannel* yt2 = &singersYtChannel;
